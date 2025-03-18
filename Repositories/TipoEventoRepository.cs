@@ -18,7 +18,7 @@ namespace EventPlus_.Repositories
         {
             try
             {
-                TipoEvento tipoEventoBuscado = _context.TipoEvento.Find(id)!;
+                TipoEvento tipoEventoBuscado = _context.TipoEventos.Find(id)!;
 
                 if (tipoEventoBuscado != null)
                 {
@@ -39,7 +39,7 @@ namespace EventPlus_.Repositories
         {
             try
             {
-                TipoEvento tipoEventoBuscado = _context.TipoEvento.Find(id)!;
+                TipoEvento tipoEventoBuscado = _context.TipoEventos.Find(id)!;
                 return tipoEventoBuscado;
 
             }
@@ -53,7 +53,7 @@ namespace EventPlus_.Repositories
         {
             try
             {
-                _context.TipoEvento.Add(novoTipoEvento);
+                _context.TipoEventos.Add(novoTipoEvento);
 
                 _context.SaveChanges();
             }
@@ -67,11 +67,11 @@ namespace EventPlus_.Repositories
         {
             try
             {
-                TipoEvento tipoEventoBuscado = _context.TipoEvento.Find(id)!;
+                TipoEvento tipoEventoBuscado = _context.TipoEventos.Find(id)!;
 
                 if (tipoEventoBuscado != null)
                 {
-                    _context.TipoEvento.Remove(tipoEventoBuscado);
+                    _context.TipoEventos.Remove(tipoEventoBuscado);
                 }
 
                 _context.SaveChanges();
@@ -87,7 +87,7 @@ namespace EventPlus_.Repositories
         {
             try
             {
-                List<TipoEvento> listaDeEventos = _context.TipoEvento.ToList();
+                List<TipoEvento> listaDeEventos = _context.TipoEventos.ToList();
                 return listaDeEventos;
 
             }

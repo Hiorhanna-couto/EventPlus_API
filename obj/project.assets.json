@@ -4976,23 +4976,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\49984891860\\.nuget\\packages\\": {},
+    "C:\\Users\\52267963825\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\49984891860\\Desktop\\EventPlus_\\EventPlus_\\EventPlus_.csproj",
+      "projectUniqueName": "C:\\Users\\52267963825\\Desktop\\EventPlus_API\\EventPlus_.csproj",
       "projectName": "EventPlus_",
-      "projectPath": "C:\\Users\\49984891860\\Desktop\\EventPlus_\\EventPlus_\\EventPlus_.csproj",
-      "packagesPath": "C:\\Users\\49984891860\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\49984891860\\Desktop\\EventPlus_\\EventPlus_\\obj\\",
+      "projectPath": "C:\\Users\\52267963825\\Desktop\\EventPlus_API\\EventPlus_.csproj",
+      "packagesPath": "C:\\Users\\52267963825\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\52267963825\\Desktop\\EventPlus_API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\49984891860\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\52267963825\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

@@ -1,8 +1,8 @@
 ﻿using EventPlus_.Domains;
-
 namespace EventPlus_.Interfaces
+
 {
-    public interface IPresencasRepository
+    public interface IPresencaEventoRepository
     {
         void Deletar(Guid id);
 
@@ -16,5 +16,6 @@ namespace EventPlus_.Interfaces
 
         void Inscrever(Presenca inscreverPresenca);
 
+      
     }
 }

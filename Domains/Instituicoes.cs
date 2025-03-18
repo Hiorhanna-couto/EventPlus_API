@@ -6,10 +6,10 @@ namespace EventPlus_.Domains
 {
     [Table("Instituicao")]
     [Index(nameof(Cnpj), IsUnique  = true)]
-    public class Instituicao
+    public class Instituicoes
     {
         [Key]
-        public Guid InstituicaoID { get; set; }
+        public Guid InstituicoesID { get; set; }
 
         [Column(TypeName = "VARCHAR(50)")]
         [Required(ErrorMessage = "O nome da fantasia é obrigatório")]
