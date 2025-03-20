@@ -1,15 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace EventPlus_.Domains
 {
-    [Table("Instituicao")]
-    [Index(nameof(Cnpj), IsUnique  = true)]
     public class Instituicoes
     {
         [Key]
-        public Guid InstituicoesID { get; set; }
+        public Guid InstituicaoID { get; set; }
 
         [Column(TypeName = "VARCHAR(50)")]
         [Required(ErrorMessage = "O nome da fantasia é obrigatório")]

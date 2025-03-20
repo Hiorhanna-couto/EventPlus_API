@@ -8,7 +8,7 @@ namespace EventPlus_.Interfaces
 
         void Deletar(Guid idComentario);
 
-        List<ComentarioEvento> Listar(Guid id);
+        List<ComentarioEvento> Listar( );
 
         ComentarioEvento BuscarPorIdUsuario(Guid UsuarioId, Guid EventosId);
     }

@@ -12,5 +12,6 @@ namespace EventPlus_.Domains
         [Column(TypeName = "VARCHAR(50)")]
         [Required(ErrorMessage = "O Titulo do tipo do usuario é obrigatório!")]
         public string? TituloTipoUsuario { get; set; }
+        public object TituloTipoEvento { get; internal set; }
     }
 }
