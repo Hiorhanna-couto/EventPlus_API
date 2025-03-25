@@ -48,11 +48,11 @@ namespace EventPlus.Controller
         }
         [Authorize]
         [HttpPut("id")]
-        public IActionResult Put(Guid id, Eventos eventos)
+        public IActionResult Put(Guid id, Eventos Eventos)
         {
             try
             {
-                _eventosRepository.Atualizar(id, eventos);
+                _eventosRepository.Atualizar(id, Eventos);
                 return NoContent();
             }
             catch (Exception error)
@@ -97,8 +97,8 @@ namespace EventPlus.Controller
         {
             try
             {
-                Eventos eventoBuscado = _eventosRepository.BuscarPorId(id);
-                return Ok(eventoBuscado);
+                Eventos EventoBuscado = _eventosRepository.BuscarPorId(id);
+                return Ok(EventoBuscado);
             }
             catch (Exception error)
             {

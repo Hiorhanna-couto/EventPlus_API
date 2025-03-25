@@ -9,13 +9,13 @@ namespace EventPlus_.Domains
         [Key]
         public Guid ComentarioEventoID { get; set; }
 
-        [Column(TypeName = "BIT")]
-        public bool? Exibe { get; set; }
 
-        [Column(TypeName = "TEXT")]
-        [Required(ErrorMessage = "Descrição do evento obrigatória!")]
+        [Column(TypeName = "VARCHAR(200)")]
+        [Required(ErrorMessage = "Descrição do comentário obrigatório!")]
         public string? Descricao { get; set; }
 
+        [Column(TypeName = "BIT")]
+        public bool? Exibe { get; set; }
 
         [Required(ErrorMessage = "O usuario é obrigatório")]
         public Guid UsuarioID { get; set; }

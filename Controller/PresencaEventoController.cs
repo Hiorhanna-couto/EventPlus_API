@@ -10,11 +10,11 @@ namespace EventPlus.Controller
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
-    public class PresencaController : ControllerBase
+    public class PresencaEventoController : ControllerBase
     {
         public readonly IPresencaEventoRepository _presencaEventoRepository;
 
-        public PresencaController(IPresencaEventoRepository presencaEventosRepository)
+        public PresencaEventoController(IPresencaEventoRepository presencaEventosRepository)
         {
             _presencaEventoRepository = presencaEventosRepository;
         }
@@ -40,7 +40,7 @@ namespace EventPlus.Controller
         {
             try
             {
-                PresencaEventoRepository presencaBuscada = PresencaEventoRepository.BuscarPorId(id)!;
+                PresencaEventoRepository presencaBuscada = Presenca.BuscarPorId(Guid id)!;
                 return Ok(presencaBuscada);
             }
             catch (Exception error)
@@ -52,11 +52,11 @@ namespace EventPlus.Controller
         [Authorize]
         [HttpPut("id")]
 
-        public IActionResult Put(Guid id, PresencaEventoRepository Presencas)
+        public IActionResult Put(Guid id, PresencaEventoRepository PresencaID)
         {
             try
             {
-                _presencaEventoRepository.Atualizar(id, Presenca);
+                _presencaEventoRepository.Atualizar(id, presenca: PresencaID);
                 return NoContent();
             }
             catch (Exception error)

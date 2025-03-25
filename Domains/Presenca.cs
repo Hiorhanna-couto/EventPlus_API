@@ -7,11 +7,12 @@ namespace EventPlus_.Domains
     public class Presenca
     {
         [Key]
-        public Guid PresencaID { get; set; }
+        public Guid PresencaId { get; set; }
 
         [Column(TypeName = "BIT")]
+        [Required(ErrorMessage = "Situação obrigatório!")]
         public bool? Situacao { get; set; }
-
+        
 
         [Required(ErrorMessage = "O usuario é obrigatório")]
         public Guid UsuarioID { get; set; }
@@ -25,5 +26,7 @@ namespace EventPlus_.Domains
 
         [ForeignKey("EventosID")]
         public Eventos? Eventos { get; set; }
+
+
     }
 }

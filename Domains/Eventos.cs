@@ -23,14 +23,14 @@ namespace EventPlus_.Domains
 
 
         [Required(ErrorMessage = "O evento é obrigatório")]
-        public Guid TipoEventoID { get; set; }
+        public Guid TipoEventoId { get; set; }
 
         [ForeignKey("TipoEventoID")]
         public TipoEvento? TipoEvento { get; set; }
 
 
         [Required(ErrorMessage = "A instituição é obrigatório")]
-        public Guid InstituicaoID { get; set; }
+        public Guid InstituicaoId { get; set; }
 
         [ForeignKey("InstituicaoID")]
         public Instituicoes? Instituicoes { get; set; }

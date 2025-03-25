@@ -11,15 +11,11 @@ namespace EventPlus_.Controller
     [Produces("application/json")]
     public class UsuarioController : ControllerBase
     {
-        private readonly ITipoUsuarioRepository? _usuarioRepository;
-
-        public UsuarioController()
-        {
-        }
+        private readonly IUsuarioRepository? _usuarioRepository;
 
         public UsuarioController(IUsuarioRepository usuariosRepository)
         {
-            _usuariosRepository = usuariosRepository;
+            _usuarioRepository = usuariosRepository;
         }
 
 
@@ -29,7 +25,7 @@ namespace EventPlus_.Controller
         {
             try
             {
-                UsuarioController.Cadastrar(usuario);
+                 _usuarioRepository?.Cadastrar(usuario);
 
                 return StatusCode(201, usuario);
             }

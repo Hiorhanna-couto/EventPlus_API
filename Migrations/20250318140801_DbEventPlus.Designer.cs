@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EventPlus_.Migrations
 {
-    [DbContext(typeof(Usuario_Context))]
+    [DbContext(typeof(Eventos_Context))]
     [Migration("20250318140801_DbEventPlus")]
     partial class DbEventPlus
     {

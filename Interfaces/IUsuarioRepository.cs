@@ -8,7 +8,7 @@ namespace EventPlus_.Interfaces
 
         Usuario BuscarPorId(Guid id);
 
-        Usuario BuscarPorEmailESenha(string email, string senha);
+        Usuario BuscarPorEmailESenha(string email, string Senha);
 
     }
 }

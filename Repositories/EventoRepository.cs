@@ -1,6 +1,9 @@
-﻿using EventPlus_.Context;
+﻿using System.Diagnostics;
+using EventPlus_.Context;
 using EventPlus_.Domains;
 using EventPlus_.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace EventPlus_.Repositories
 {
@@ -25,7 +28,10 @@ namespace EventPlus_.Repositories
                     if (EventosBuscado != null)
                     {
                         EventosBuscado.NomeEvento = evento.NomeEvento;
-                    }
+                        EventosBuscado.DataEvento = evento.DataEvento;
+                        EventosBuscado.Descricao = evento.Descricao;
+                        EventosBuscado.TipoEvento = evento.TipoEvento;
+                }
                     _context?.SaveChanges();
                 }
                 catch (Exception)
@@ -37,19 +43,29 @@ namespace EventPlus_.Repositories
 
         public Eventos BuscarPorId(Guid id)
         {
-            return _context.Evento.Find(id)!;
+            try
+            {
+                Eventos eventoBuscado = _context.Evento.Find(id)!;
+
+                return eventoBuscado;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
-        public void Cadastrar(Eventos evento)
+        public void Cadastrar(Eventos novoEvento)
         {
             try
             {
-                _context.Evento.Add(evento);
+                _context.Evento.Add(novoEvento);
                 _context.SaveChanges();
             }
-            catch (Exception ex)
+            catch (Exception )
             {
-                throw new Exception("Erro ao cadastrar o evento", ex);
+                throw ;
             }
         }
 
@@ -62,30 +78,68 @@ namespace EventPlus_.Repositories
                 if (EventoBuscado != null)
                 {
                     _context?.Evento.Remove(EventoBuscado);
-                    _context?.SaveChanges();
                 }
 
+              _context?.SaveChanges();
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
-                throw new Exception("Erro ao deletar o comentário do evento", ex);
+                throw ;
+            }
+        }
+
+
+        public List<Eventos> Listar(Guid id )
+        {
+            try
+            {
+                List<Eventos> listaDeEventos = _context.Evento.ToList();
+                return listaDeEventos;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
 
         public List<Eventos> Listar()
         {
-            return _context.Evento.ToList();
+            throw new NotImplementedException();
         }
 
-        public List<Eventos> ListarPorId(Guid id)
+        public List<Eventos> ListarPorId(Guid EventosID)
         {
-            return _context.Evento.Where(e => e.EventosID == id).ToList();
+            try
+            {
+                List<Eventos> listaEventoPorId = _context.Evento
+
+                    .Include(g => g.EventosID).Where(f => f.EventosID == EventosID)
+                    .ToList();
+
+                return listaEventoPorId;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public List<Eventos> ListarProximosEventos(Guid id)
         {
-            return _context.Evento.Where(e => e.DataEvento > DateTime.Now).ToList();
+            try
+            {
+                List<Eventos> listaProximosEventos = _context.Evento.ToList();
+                return listaProximosEventos;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }
