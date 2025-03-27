@@ -30,24 +30,25 @@ namespace EventPlus_.Controller
                 _comentarioEventoRepository.Cadastrar(novoComentarioEvento);
                 return Created();
             }
-            catch (Exception error)
+            catch (Exception e)
             {
-                return BadRequest(error.Message);
+                return BadRequest(e.Message);
             }
         }
 
-        private void Cadastrar(ComentarioEvento novoComentarioEvento)
-        {
-            throw new NotImplementedException();
-        }
+        /// <summary>
+        /// Endpoint para deletar Feedbacks
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
 
-        [Authorize]
-        [HttpDelete("{idComentario}")]
-        public IActionResult Delete(Guid idComentario)
+       
+        [HttpDelete("{id}")]
+        public IActionResult Delete(Guid id)
         {
             try
             {
-                _comentarioEventoRepository.Deletar(idComentario);
+                _comentarioEventoRepository.Deletar(id);
                 return NoContent();
 
             }
@@ -58,23 +59,31 @@ namespace EventPlus_.Controller
             }
 
         }
-
+        // <summary>
+        /// Endpoint para listar Feedbacks
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Get(Guid id)
         {
             try
             {
-                List<ComentarioEvento> listaDeComentarios = _comentarioEventoRepository.Listar();
-                return Ok(listaDeComentarios);
+                return Ok(_comentarioEventoRepository.Listar(id));
 
             }
-            catch (Exception error)
+            catch (Exception e)
             {
 
-                return BadRequest(error.Message);
+                return BadRequest(e.Message);
             }
         }
 
+        /// <summary>
+        /// Endpoint para buscar Feedbacks por Id dos usuarios
+        /// </summary>
+        /// <param name="UsuarioId"></param>
+        /// <param name="EventoId"></param>
+        /// <returns></returns>
         [HttpGet("BuscarPorIdUsuario/{id}")]
         public IActionResult GetById(Guid UsuarioId, Guid EventosId)
         {

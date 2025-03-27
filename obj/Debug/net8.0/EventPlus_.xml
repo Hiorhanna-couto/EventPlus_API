@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EventPlus_</name>
+    </assembly>
+    <members>
+        <member name="M:EventPlus_.Controller.ComentarioEventoController.Delete(System.Guid)">
+            <summary>
+            Endpoint para deletar Feedbacks
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:EventPlus_.Controller.ComentarioEventoController.Get(System.Guid)" -->
+        <member name="M:EventPlus_.Controller.ComentarioEventoController.GetById(System.Guid,System.Guid)">
+            <summary>
+            Endpoint para buscar Feedbacks por Id dos usuarios
+            </summary>
+            <param name="UsuarioId"></param>
+            <param name="EventoId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EventPlus_.Controller.LoginController.Login(EventPlus_.DTO.LoginDTO)">
+            <summary>
+            Endpoint para Login pelo seu Id
+            </summary>
+            <param name="id">id do genero buscado</param>
+            <returns>GEnero buscado</returns>
+        </member>
+        <member name="M:EventPlus_.Controller.TipoEventoController.Post(EventPlus_.Domains.TipoEvento)">
+            <summary>
+            Endpoint para cadastras novos tipos de eventos
+            </summary>
+            <param name="novoTipoEvento"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EventPlus_.Controller.TiposUsuarioController.Post(EventPlus_.Domains.TipoUsuario)">
+            <summary>
+            Endpoint para cadastrar novos tipos de usuarios.
+            </summary>
+            <param name="novoTipoUsuario"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EventPlus_.Controller.TiposUsuarioController.GetById(System.Guid)">
+            <summary>
+            Endpoint para buscar tipo usuarios pelo id.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EventPlus_.Controller.TiposUsuarioController.Delete(System.Guid)">
+            <summary>
+            Endpoint para deletar tipos usuarios
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EventPlus_.Controller.TiposUsuarioController.Put(System.Guid,EventPlus_.Domains.TipoUsuario)">
+            <summary>
+            Endpoint para atualizar tipos usuarios
+            </summary>
+            <param name="id"></param>
+            <param name="tipoUsuario"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EventPlus_.Migrations.AddMigrationEventosPlus">
+            <inheritdoc />
+        </member>
+        <member name="M:EventPlus_.Migrations.AddMigrationEventosPlus.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:EventPlus_.Migrations.AddMigrationEventosPlus.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:EventPlus_.Migrations.AddMigrationEventosPlus.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:EventPlus_.Migrations.DbEventPlus">
+            <inheritdoc />
+        </member>
+        <member name="M:EventPlus_.Migrations.DbEventPlus.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:EventPlus_.Migrations.DbEventPlus.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:EventPlus_.Migrations.DbEventPlus.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:EventPlus.Controller.EventoController.Post(EventPlus_.Domains.Eventos)">
+            <summary>
+            Endpoint para cadastras Eventos
+            </summary>
+            <param name="novoEvento"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EventPlus.Controller.EventoController.Delete(System.Guid)">
+            <summary>
+            Endpoint para Deletar Eventos
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EventPlus.Controller.EventoController.Get(System.Guid)">
+            <summary>
+            Endpoint para Listar Proximos Eventos
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EventPlus.Controller.EventoController.ListById(System.Guid)">
+            <summary>
+            Endpoint para Listar Eventos por Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EventPlus.Controller.PresencaEventoController.Delete(System.Guid)">
+            <summary>
+            Endpoint para deletar presenças
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EventPlus.Controller.PresencaEventoController.GetById(System.Guid)">
+            <summary>
+            Endpoint para buscar por id as presenças
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EventPlus.Controller.PresencaEventoController.Get">
+            <summary>
+            Endpoint para Listar Presenças
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EventPlus.Controller.PresencaEventoController.GetByMe(System.Guid)">
+            <summary>
+            Endpoint para listar suas presenças
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EventPlus.Controller.PresencaEventoController.Post(EventPlus_.Domains.Presenca)">
+            <summary>
+            Endpoint para Inscrever(Cadastrar presença)
+            </summary>
+            <param name="novaPresenca"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

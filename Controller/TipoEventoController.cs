@@ -17,18 +17,18 @@ namespace EventPlus_.Controller
         {
             _tipoEventoRepository = tipoEventoRepository;
         }
-    
 
-     /// <summary>
-        /// Endpoint para listar tipos de eventos
-        /// </summary>
-        /// <returns></returns>
+
+        //---------------------------------------------------------------------------------
+        // Listar
         [HttpGet]
-        public ActionResult Get()
+        public IActionResult Get()
         {
             try
             {
                 return Ok(_tipoEventoRepository.Listar());
+               
+               
             }
             catch (Exception e)
             {
@@ -49,7 +49,7 @@ namespace EventPlus_.Controller
             try
             {
                 _tipoEventoRepository.Cadastrar(novoTipoEvento);
-                return Created();
+                return StatusCode(201, novoTipoEvento);
             }
             catch (Exception e)
             {
@@ -59,34 +59,27 @@ namespace EventPlus_.Controller
 
         }
 
-        /// <summary>
-        /// Endpoint para buscar tipos de eventos por id
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        //---------------------------------------------------------------------------------
+        // Buscar Por Id
         [HttpGet("BuscarPorId/{id}")]
         public ActionResult GetById(Guid id)
         {
             try
             {
-                TipoEvento tipoBuscado = _tipoEventoRepository.BuscarPorId(id);
-                return Ok(tipoBuscado);
+                return Ok(_tipoEventoRepository.BuscarPorId(id));
+               
             }
-            catch (Exception)
+            catch (Exception e )
             {
 
-                return BadRequest();
+                return BadRequest(e.Message);
             }
 
         }
-
-        /// <summary>
-        /// Endpoint para deletar tipos de eventos
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        //---------------------------------------------------------------------------------
+        // Deletar
         [HttpDelete("{id}")]
-        public ActionResult Delete(Guid id)
+        public IActionResult Delete(Guid id)
         {
             try
             {
@@ -102,14 +95,16 @@ namespace EventPlus_.Controller
 
         }
 
-
+        //---------------------------------------------------------------------------------
+        // Atualizar 
         [HttpPut("{id}")]
         public IActionResult Put(Guid id, TipoEvento tipoEvento)
         {
             try
             {
                 _tipoEventoRepository.Atualizar(id, tipoEvento);
-                return NoContent();
+
+                return StatusCode(204 , tipoEvento);
             }
             catch (Exception e)
             {

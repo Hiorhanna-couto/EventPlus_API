@@ -1,5 +1,6 @@
 ﻿using EventPlus_.Domains;
 using EventPlus_.Interfaces;
+using EventPlus_.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,13 +18,15 @@ namespace EventPlus_.Controller
             _tipoUsuarioRepository = tipoUsuarioRepository;
         }
 
-
+        //---------------------------------------------------------------------------------
+        // Listar
         [HttpGet]
         public IActionResult Get()
         {
             try
             {
                 return Ok(_tipoUsuarioRepository.Listar());
+              
             }
             catch (Exception e)
             {
@@ -44,7 +47,7 @@ namespace EventPlus_.Controller
             try
             {
                 _tipoUsuarioRepository.Cadastrar(novoTipoUsuario);
-                return Created();
+                return StatusCode(201, novoTipoUsuario);
             }
             catch (Exception e)
             {
@@ -65,13 +68,13 @@ namespace EventPlus_.Controller
         {
             try
             {
-                TipoUsuario tipoBuscado = _tipoUsuarioRepository.BuscarPorId(id);
-                return Ok(tipoBuscado);
+                return Ok(_tipoUsuarioRepository.BuscarPorId(id));
+               
             }
-            catch (Exception)
+            catch (Exception e)
             {
 
-                return BadRequest();
+                return BadRequest(e.Message);
             }
 
         }
@@ -89,10 +92,10 @@ namespace EventPlus_.Controller
                 _tipoUsuarioRepository.Deletar(id);
                 return NoContent();
             }
-            catch (Exception)
+            catch (Exception e)
             {
 
-                throw;
+                return BadRequest(e.Message);
             }
 
         }
@@ -109,7 +112,7 @@ namespace EventPlus_.Controller
             try
             {
                 _tipoUsuarioRepository.Atualizar(id, tipoUsuario);
-                return NoContent();
+                return StatusCode(204, tipoUsuario);
             }
             catch (Exception e)
             {

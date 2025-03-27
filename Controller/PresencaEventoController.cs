@@ -18,8 +18,12 @@ namespace EventPlus.Controller
         {
             _presencaEventoRepository = presencaEventosRepository;
         }
-
-        [Authorize]
+        //-------------------------------------------------------------
+        /// <summary>
+        /// Endpoint para deletar presenças
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public ActionResult Delete(Guid id)
         {
@@ -34,66 +38,70 @@ namespace EventPlus.Controller
                 throw;
             }
         }
-
+//------------------------------------------------------------------
+        /// <summary>
+        /// Endpoint para buscar por id as presenças
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("BuscarPorId/{id}")]
         public IActionResult GetById(Guid id)
         {
             try
             {
-                PresencaEventoRepository presencaBuscada = Presenca.BuscarPorId(Guid id)!;
-                return Ok(presencaBuscada);
+               
+                return Ok(_presencaEventoRepository.BuscarPorId(id));
             }
             catch (Exception error)
             {
                 return BadRequest(error.Message);
             }
         }
-
-        [Authorize]
-        [HttpPut("id")]
-
-        public IActionResult Put(Guid id, PresencaEventoRepository PresencaID)
-        {
-            try
-            {
-                _presencaEventoRepository.Atualizar(id, presenca: PresencaID);
-                return NoContent();
-            }
-            catch (Exception error)
-            {
-                return BadRequest(error.Message);
-            }
-        }
-
+  //------------------------------------------------------------------
+        /// <summary>
+        /// Endpoint para Listar Presenças
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Get()
         {
             try
             {
-                List<Presenca> ListaDePresenca = _presencaEventoRepository.Listar();
-                return Ok(ListaDePresenca);
+               
+                return Ok(_presencaEventoRepository.Listar());
             }
-            catch (Exception error)
+           
+            catch (Exception e)
             {
-                return BadRequest(error.Message);
+                // Exceção genérica, caso o erro não seja do tipo ApplicationException
+                return BadRequest( e.Message);
             }
         }
-
-        [HttpGet]
-        public IActionResult Get(Guid id)
+        //-----------------------------------------------------
+        /// <summary>
+        /// Endpoint para listar suas presenças
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("ListarMinhasPresencas/{id}")]
+        public IActionResult GetByMe(Guid id)
         {
             try
             {
-                List<Presenca> ListarPresencas = _presencaEventoRepository.ListarMinhasPresencas(id);
-                return Ok(ListarPresencas);
+               
+                return Ok(_presencaEventoRepository.ListarMinhasPresencas(id));
             }
             catch (Exception error)
             {
                 return BadRequest(error.Message);
             }
         }
-
-        [Authorize]
+        //**********************************
+        /// <summary>
+        /// Endpoint para Inscrever(Cadastrar presença)
+        /// </summary>
+        /// <param name="novaPresenca"></param>
+        /// <returns></returns>
         [HttpPost]
 
         public IActionResult Post(Presenca inscreverPresencaEventos)
@@ -101,7 +109,7 @@ namespace EventPlus.Controller
             try
             {
                 _presencaEventoRepository.Inscrever(inscreverPresencaEventos);
-                return Created();
+                return StatusCode(201);
             }
 
             catch (Exception error)

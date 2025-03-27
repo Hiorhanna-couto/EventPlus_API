@@ -19,7 +19,7 @@ namespace EventPlus_.Controller
         }
 
 
-        [Authorize]
+        
         [HttpPost]
         public IActionResult Post(Usuario usuario)
         {
@@ -48,7 +48,7 @@ namespace EventPlus_.Controller
                     return Ok(usuarioBuscado);
 
                 }
-                return null;
+                return null!;
             }
             catch (Exception error)
             {

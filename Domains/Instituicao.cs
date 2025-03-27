@@ -7,7 +7,7 @@ namespace EventPlus_.Domains
     [Table("Instituicoes")]
     [Index(nameof(CNPJ), IsUnique = true)]
 
-    public class Instituicoes
+    public class Instituicao
 
     {
         [Key]

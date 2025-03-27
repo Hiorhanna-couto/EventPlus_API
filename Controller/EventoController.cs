@@ -1,5 +1,6 @@
 ﻿using EventPlus_.Domains;
 using EventPlus_.Interfaces;
+using EventPlus_.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -18,52 +19,46 @@ namespace EventPlus.Controller
             _eventosRepository = eventosRepository;
         }
 
+
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult GetNextEvents(Guid id)
         {
             try
             {
-                List<Eventos> listaDeEventos = _eventosRepository.Listar();
-                return Ok(listaDeEventos);
+                return Ok(_eventosRepository.ListarProximosEventos(id));
             }
-            catch (Exception error)
+            catch (Exception e)
             {
-                return BadRequest(error.Message);
+
+                return BadRequest(e.Message);
             }
         }
 
-        [Authorize]
+
+        /// <summary>
+        /// Endpoint para cadastras Eventos
+        /// </summary>
+        /// <param name="novoEvento"></param>
+        /// <returns></returns>
         [HttpPost]
-        public IActionResult Post(Eventos novoEvento)
+        public IActionResult Post(Eventos evento)
         {
             try
             {
-                _eventosRepository.Cadastrar(novoEvento);
+                _eventosRepository.Cadastrar(evento);
                 return Created();
             }
-            catch (Exception error)
+            catch (Exception e)
             {
-                return BadRequest(error.Message);
+                return BadRequest(e.Message);
             }
         }
-        [Authorize]
-        [HttpPut("id")]
-        public IActionResult Put(Guid id, Eventos Eventos)
-        {
-            try
-            {
-                _eventosRepository.Atualizar(id, Eventos);
-                return NoContent();
-            }
-            catch (Exception error)
-            {
-                return BadRequest(error.Message);
-
-            }
-        }
-        [Authorize]
-        [HttpDelete("id")]
-
+        /// <summary>
+        /// Endpoint para Deletar Eventos
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpDelete("{id}")]
         public IActionResult Delete(Guid id)
         {
             try
@@ -73,52 +68,61 @@ namespace EventPlus.Controller
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
+        [HttpPut("{id}")]
+        public IActionResult Put(Guid id, Eventos evento)
+        {
+            try
+            {
+                _eventosRepository.Atualizar(id, evento);
+                return StatusCode(204, evento);
+            }
+            catch (Exception e)
+            {
 
-        [HttpGet]
+                return BadRequest(e.Message);
+            }
+
+        }
+
+        /// <summary>
+        /// Endpoint para Listar Proximos Eventos
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("ListarProximosEventos/{id}")]
         public IActionResult Get(Guid id)
         {
             try
             {
-                List<Eventos> ListarPorId = _eventosRepository.ListarPorId(id);
-                return Ok(ListarPorId);
+                return Ok( _eventosRepository.Listar());
             }
             catch (Exception error)
             {
+
                 return BadRequest(error.Message);
             }
+
         }
 
-        [HttpGet("BuscarPorId/{id}")]
-        public IActionResult GetById(Guid id)
+        /// <summary>
+        /// Endpoint para Listar Eventos por Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("ListarPorId/{id}")]
+        public IActionResult ListById(Guid id)
         {
             try
             {
-                Eventos EventoBuscado = _eventosRepository.BuscarPorId(id);
-                return Ok(EventoBuscado);
+                return Ok(_eventosRepository.ListarPorId(id));
             }
-            catch (Exception error)
+            catch (Exception)
             {
-                return BadRequest(error.Message);
+                return Ok(_eventosRepository.ListarPorId(id));
             }
         }
-
-        [HttpGet]
-        public IActionResult GetAction(Guid idProximoEvento)
-        {
-            try
-            {
-                List<Eventos> ListarProximoEvento = _eventosRepository.ListarProximosEventos(idProximoEvento);
-                return Ok(ListarProximoEvento);
-            }
-            catch (Exception error)
-            {
-                return BadRequest(error.Message);
-            }
-        }
-
     }
 }
